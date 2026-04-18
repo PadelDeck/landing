@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PadelDeck — Padel scoring on your wrist</title>
+  <meta name="description" content="Track every point, game and set directly from your Amazfit Balance. No phone needed. Just play.">
+  <link rel="canonical" href="https://padeldeck.app/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://padeldeck.app/">
+  <meta property="og:title" content="PadelDeck — Padel scoring on your wrist">
+  <meta property="og:description" content="Track every point, game and set directly from your Amazfit Balance. No phone needed. Just play.">
+  <meta property="og:image" content="https://padeldeck.app/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="PadelDeck">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PadelDeck — Padel scoring on your wrist">
+  <meta name="twitter:description" content="Track every point, game and set directly from your Amazfit Balance. No phone needed. Just play.">
+  <meta name="twitter:image" content="https://padeldeck.app/og-image.png">
+
+  <!-- Extra SEO -->
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="padel, padel score, padel tracker, amazfit, zepp os, smartwatch padel, padel app, score keeper">
+  <meta name="author" content="PadelDeck">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PadelDeck",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Zepp OS",
+    "description": "Padel scorekeeper for Amazfit Balance. Track points, games and sets live on your wrist. No phone needed.",
+    "url": "https://padeldeck.app",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #000;
+      --bg-card:      #0f0f0f;
+      --bg-elevated:  #1a1a1a;
+      --text-1:       #ffffff;
+      --text-2:       #888;
+      --text-3:       #444;
+      --accent:       #29B6F6;
+      --accent-dim:   rgba(41,182,246,0.15);
+      --accent-glow:  rgba(41,182,246,0.25);
+      --red:          #EF5350;
+      --border:       rgba(255,255,255,0.07);
+      --border-hover: rgba(41,182,246,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text-1);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NOISE TEXTURE overlay ──────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 48px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(24px) saturate(1.4);
+      -webkit-backdrop-filter: blur(24px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.5px;
+      color: var(--text-1);
+    }
+    .nav-logo em { font-style: normal; color: var(--accent); }
+
+    .nav-pill {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--accent);
+      border: 1px solid rgba(41,182,246,0.3);
+      padding: 5px 14px; border-radius: 100px;
+      background: var(--accent-dim);
+    }
+    .nav-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: blink 2.4s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    /* ── HERO ───────────────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 24px 60px;
+      overflow: hidden;
+    }
+
+    /* top glow */
+    .hero-glow {
+      position: absolute;
+      top: -160px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse at center top, rgba(41,182,246,0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      padding: 6px 16px; border-radius: 100px;
+      border: 1px solid rgba(41,182,246,0.2);
+      background: rgba(41,182,246,0.06);
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 9vw, 96px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      margin-bottom: 28px;
+    }
+    h1 .line2 { color: var(--accent); display: block; }
+
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--text-2);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 80px;
+    }
+
+    .btn-accent {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #000;
+      font-size: 14px; font-weight: 700; letter-spacing: -0.2px;
+      padding: 13px 26px; border-radius: 100px;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+    }
+    .btn-accent:hover {
+      background: #4fc3f7;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(41,182,246,0.28);
+    }
+
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      font-size: 14px; font-weight: 500;
+      padding: 13px 26px; border-radius: 100px;
+      text-decoration: none;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.2);
+      color: var(--text-1);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ── WATCH MOCKUP ───────────────────────────────────────────────────── */
+    .watch-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .watch-wrap::after {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(41,182,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      animation: watch-glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes watch-glow {
+      from { opacity: 0.6; } to { opacity: 1; }
+    }
+
+    .watch {
+      width: 270px; height: 270px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      border: 2px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 0 0 6px rgba(255,255,255,0.025),
+        0 0 0 12px rgba(255,255,255,0.01),
+        0 48px 96px rgba(0,0,0,0.9);
+      user-select: none;
+    }
+
+    /* 480×480 canvas scaled to 270px (270/480 = 0.5625) */
+    .watch-inner {
+      width: 480px; height: 480px;
+      transform: scale(0.5625);
+      transform-origin: top left;
+      position: absolute;
+      top: 0; left: 0;
+    }
+    .w-score-val {
+      transition: opacity 0.12s ease;
+    }
+    .w-score-val.fade { opacity: 0; }
+
+    /* ── FEATURES ───────────────────────────────────────────────────────── */
+    section { position: relative; z-index: 1; }
+
+    .features {
+      padding: 140px 24px;
+      max-width: 1140px; margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      text-align: center;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .section-h {
+      text-align: center;
+      font-size: clamp(30px, 4.5vw, 48px);
+      font-weight: 900; letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 72px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 34px 32px;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(41,182,246,0.4) 50%, transparent 100%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .card:hover {
+      border-color: var(--border-hover);
+      background: #131313;
+      transform: translateY(-3px);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 46px; height: 46px; border-radius: 13px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(41,182,246,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+    .card-title {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.3px;
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-size: 14px; color: var(--text-2); line-height: 1.7;
+    }
+
+    /* ── SCREENSHOTS ────────────────────────────────────────────────────── */
+    .screenshots {
+      padding: 0 0 140px;
+      overflow: hidden;
+    }
+    .screenshots .section-eyebrow,
+    .screenshots .section-h {
+      padding: 0 24px;
+    }
+    .screenshots .section-h { margin-bottom: 56px; }
+
+    .screens-outer {
+      position: relative;
+    }
+    /* fade edges */
+    .screens-outer::before,
+    .screens-outer::after {
+      content: '';
+      position: absolute; top: 0; bottom: 0; width: 80px;
+      z-index: 2; pointer-events: none;
+    }
+    .screens-outer::before {
+      left: 0;
+      background: linear-gradient(to right, #000, transparent);
+    }
+    .screens-outer::after {
+      right: 0;
+      background: linear-gradient(to left, #000, transparent);
+    }
+
+    .screens-track {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 24px 80px 40px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .screens-track::-webkit-scrollbar { display: none; }
+
+    .screen-item {
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .screen-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.07);
+      box-shadow:
+        0 0 0 5px rgba(255,255,255,0.02),
+        0 0 0 11px rgba(255,255,255,0.01),
+        0 28px 56px rgba(0,0,0,0.75);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+    }
+    .screen-img:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow:
+        0 0 0 5px rgba(255,255,255,0.02),
+        0 0 0 11px rgba(41,182,246,0.08),
+        0 36px 72px rgba(0,0,0,0.8),
+        0 0 40px rgba(41,182,246,0.12);
+    }
+
+    .screen-cap {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── NUMBERS ────────────────────────────────────────────────────────── */
+    .numbers {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 24px;
+    }
+    .numbers-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+    }
+    .num-item {
+      text-align: center;
+      padding: 24px 16px;
+      border-right: 1px solid var(--border);
+    }
+    .num-item:last-child { border-right: none; }
+    .num-val {
+      font-size: 52px; font-weight: 900; letter-spacing: -3px;
+      color: var(--accent); line-height: 1; margin-bottom: 10px;
+    }
+    .num-label {
+      font-size: 13px; color: var(--text-2); font-weight: 400;
+    }
+
+    /* ── HOW IT WORKS ───────────────────────────────────────────────────── */
+    .how {
+      padding: 140px 24px;
+      max-width: 900px; margin: 0 auto;
+    }
+    .steps {
+      display: flex; flex-direction: column; gap: 0;
+      margin-top: 72px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      left: 22px; top: 22px; bottom: 22px;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+      opacity: 0.2;
+    }
+    .step {
+      display: flex; gap: 28px; align-items: flex-start;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid rgba(41,182,246,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: var(--accent);
+    }
+    .step-content h3 {
+      font-size: 17px; font-weight: 700; letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .step-content p {
+      font-size: 14px; color: var(--text-2); line-height: 1.65;
+    }
+
+    /* ── CTA ────────────────────────────────────────────────────────────── */
+    .cta-section {
+      padding: 140px 24px;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(41,182,246,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 8px 18px;
+      font-size: 12px; font-weight: 600; color: var(--text-2);
+      margin-bottom: 32px;
+    }
+    .cta-badge svg { color: var(--accent); }
+
+    .cta-h {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900; letter-spacing: -2.5px;
+      line-height: 1; margin-bottom: 20px;
+    }
+    .cta-sub {
+      font-size: 17px; color: var(--text-2);
+      max-width: 440px; margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+
+    /* email form */
+    .notify-form {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      max-width: 420px; margin: 0 auto;
+    }
+    .notify-input {
+      flex: 1; min-width: 220px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 13px 22px;
+      font-size: 14px; font-family: inherit;
+      color: var(--text-1);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .notify-input::placeholder { color: var(--text-3); }
+    .notify-input:focus { border-color: rgba(41,182,246,0.4); }
+
+    .notify-btn {
+      background: var(--accent); color: #000;
+      border: none; cursor: pointer;
+      font-size: 14px; font-weight: 700; font-family: inherit;
+      padding: 13px 24px; border-radius: 100px;
+      transition: background 0.18s, transform 0.18s;
+      white-space: nowrap;
+    }
+    .notify-btn:hover {
+      background: #4fc3f7;
+      transform: translateY(-1px);
+    }
+
+    .notify-note {
+      font-size: 12px; color: var(--text-3);
+      margin-top: 14px;
+    }
+
+    /* success state */
+    .notify-success {
+      display: none;
+      font-size: 15px; color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────────────── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-size: 16px; font-weight: 800; letter-spacing: -0.4px;
+    }
+    .footer-logo em { font-style: normal; color: var(--accent); }
+    footer p {
+      font-size: 12px; color: var(--text-3);
+    }
+
+    /* ── FADE-UP ─────────────────────────────────────────────────────────── */
+    .fu {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fu.in { opacity: 1; transform: none; }
+    .fu-d1 { transition-delay: 0.05s; }
+    .fu-d2 { transition-delay: 0.12s; }
+    .fu-d3 { transition-delay: 0.19s; }
+    .fu-d4 { transition-delay: 0.26s; }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      h1 { letter-spacing: -2.5px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-accent, .btn-ghost { width: 100%; justify-content: center; max-width: 320px; }
+      .watch { width: 230px; height: 230px; }
+      .watch-inner { transform: scale(0.4792); }
+      .w-pts { font-size: 50px; }
+      .num-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .num-item:last-child { border-bottom: none; }
+      footer { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Padel<em>Deck</em></div>
+  <div class="nav-pill">
+    <span class="nav-dot"></span>
+    In development
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-eyebrow">
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#29B6F6" stroke-width="1.5"/><path d="M6 3v3l2 1.5" stroke="#29B6F6" stroke-width="1.2" stroke-linecap="round"/></svg>
+    Coming to Zepp Marketplace
+  </div>
+
+  <h1>
+    Your padel.
+    <span class="line2">Your wrist.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Track every point, game and set live on your Amazfit Balance.
+    No phone. No paper. Just play.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#notify" class="btn-accent">
+      Get notified
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a href="#features" class="btn-ghost">See features</a>
+  </div>
+
+  <!-- Watch mockup — score screen con animación de puntos, exact layout de watch-screens.html -->
+  <div class="watch-wrap fu">
+    <div class="watch">
+      <div class="watch-inner">
+        <div style="position:absolute;inset:0;background:#000"></div>
+        <!-- THEM zone -->
+        <div style="position:absolute;left:0;top:0;width:480px;height:235px;background:#29b6f6"></div>
+        <!-- WE zone -->
+        <div style="position:absolute;left:0;top:245px;width:480px;height:235px;background:#0a1929"></div>
+        <!-- THEM score -->
+        <div id="wThem" class="w-score-val" style="position:absolute;left:120px;top:68px;width:240px;height:100px;display:flex;align-items:center;justify-content:center;font-size:88px;color:#fff;font-weight:800;line-height:1">0</div>
+        <!-- THEM label -->
+        <div style="position:absolute;left:0;top:170px;width:480px;height:24px;display:flex;align-items:center;justify-content:center;font-size:16px;color:rgba(255,255,255,0.55);font-weight:700;letter-spacing:3px">T H E M</div>
+        <!-- WE score -->
+        <div id="wUs" class="w-score-val" style="position:absolute;left:120px;top:313px;width:240px;height:100px;display:flex;align-items:center;justify-content:center;font-size:88px;color:#fff;font-weight:800;line-height:1">0</div>
+        <!-- US label -->
+        <div style="position:absolute;left:0;top:284px;width:480px;height:24px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#29b6f6;font-weight:700;letter-spacing:5px">U S</div>
+        <!-- Island BG -->
+        <div style="position:absolute;left:52px;top:202px;width:376px;height:76px;border-radius:14px;background:#1e1e1e"></div>
+        <!-- Undo -->
+        <div style="position:absolute;left:52px;top:202px;width:52px;height:76px;border-radius:14px;background:#1e1e1e;display:flex;align-items:center;justify-content:center;font-size:24px;color:#555">↺</div>
+        <!-- Div: undo|serve -->
+        <div style="position:absolute;left:104px;top:210px;width:1px;height:60px;background:#282828"></div>
+        <!-- Arrow (behind cells) -->
+        <div id="wArrow" style="position:absolute;left:105px;top:202px;width:72px;height:76px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#29b6f6;opacity:0.85;pointer-events:none">↘</div>
+        <!-- Serve cells: THEY-LEFT, THEY-RIGHT, WE-LEFT, WE-RIGHT (on top of arrow) -->
+        <div id="wCell_TL" style="position:absolute;left:105px;top:202px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#29b6f6;font-weight:700">1</div>
+        <div id="wCell_TR" style="position:absolute;left:141px;top:202px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#2a2a2a">●</div>
+        <div id="wCell_WL" style="position:absolute;left:105px;top:240px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#1e1e1e">●</div>
+        <div id="wCell_WR" style="position:absolute;left:141px;top:240px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#145b7b">●</div>
+        <!-- Div: serve|clock -->
+        <div style="position:absolute;left:177px;top:210px;width:1px;height:60px;background:#282828"></div>
+        <!-- Clock -->
+        <div id="wClock" style="position:absolute;left:178px;top:202px;width:177px;height:76px;display:flex;align-items:center;justify-content:center;font-size:33px;color:#999;font-weight:400;letter-spacing:1px">14:32</div>
+        <!-- Div: clock|grid -->
+        <div style="position:absolute;left:355px;top:209px;width:1px;height:62px;background:#282828"></div>
+        <!-- Set grid: col 0 done, col 1 current (animated), col 2 future -->
+        <div style="position:absolute;left:356px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#404040;font-weight:700">4</div>
+        <div style="position:absolute;left:356px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#404040;font-weight:700">6</div>
+        <div id="wGridThem" style="position:absolute;left:380px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#999;font-weight:700">3</div>
+        <div id="wGridUs" style="position:absolute;left:380px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#29b6f6;font-weight:700">2</div>
+        <div style="position:absolute;left:404px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#2a2a2a;font-weight:700">–</div>
+        <div style="position:absolute;left:404px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#2a2a2a;font-weight:700">–</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <p class="section-eyebrow">Why PadelDeck</p>
+  <h2 class="section-h fu">Everything your<br>match needs</h2>
+
+  <div class="grid">
+    <div class="card fu fu-d1">
+      <div class="card-icon">⌚</div>
+      <div class="card-title">Built for the wrist</div>
+      <div class="card-desc">Designed from scratch for a round 480×480 AMOLED screen. Huge tap zones, instant haptic feedback, zero eye strain in full sun.</div>
+    </div>
+    <div class="card fu fu-d2">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Every official format</div>
+      <div class="card-desc">Ventajas or Golden Point. Tie-break, Super Tie-break. Best of 1, 3 or 5 sets. All padel rule variations covered out of the box.</div>
+    </div>
+    <div class="card fu fu-d3">
+      <div class="card-icon">↩</div>
+      <div class="card-title">Instant undo</div>
+      <div class="card-desc">Tapped the wrong side? Hit undo right on the score screen. Up to 20 levels deep — no match gets ruined by a misclick.</div>
+    </div>
+    <div class="card fu fu-d4">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Full match history</div>
+      <div class="card-desc">Every match saved on your watch. Set breakdown, total points, duration and format — all accessible from your wrist.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots">
+  <p class="section-eyebrow">See it in action</p>
+  <h2 class="section-h fu">Every screen,<br>built for the court.</h2>
+  <div class="screens-outer">
+    <div class="screens-track">
+      <div class="screen-item fu">
+        <img class="screen-img" src="screenshots/padeldeck_home.png" alt="PadelDeck home screen">
+        <span class="screen-cap">Home</span>
+      </div>
+      <div class="screen-item fu fu-d1">
+        <img class="screen-img" src="screenshots/padeldeck_score.png" alt="Live scoring screen">
+        <span class="screen-cap">Live Scoring</span>
+      </div>
+      <div class="screen-item fu fu-d2">
+        <img class="screen-img" src="screenshots/padeldeck_gameWin.png" alt="Game won overlay">
+        <span class="screen-cap">Game Won</span>
+      </div>
+      <div class="screen-item fu fu-d3">
+        <img class="screen-img" src="screenshots/padeldeck_resumeStats.png" alt="Match stats view">
+        <span class="screen-cap">Match Stats</span>
+      </div>
+      <div class="screen-item fu fu-d4">
+        <img class="screen-img" src="screenshots/padeldeck_matchEnded.png" alt="Match end screen">
+        <span class="screen-cap">Match End</span>
+      </div>
+      <div class="screen-item fu fu-d1">
+        <img class="screen-img" src="screenshots/padeldeck_history.png" alt="Match history">
+        <span class="screen-cap">History</span>
+      </div>
+      <div class="screen-item fu fu-d2">
+        <img class="screen-img" src="screenshots/padeldeck_continueGame.png" alt="Resume match in progress">
+        <span class="screen-cap">Continue Match</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-item fu">
+      <div class="num-val">6</div>
+      <div class="num-label">Accent colors</div>
+    </div>
+    <div class="num-item fu fu-d1">
+      <div class="num-val">50</div>
+      <div class="num-label">Matches stored locally</div>
+    </div>
+    <div class="num-item fu fu-d2">
+      <div class="num-val">20</div>
+      <div class="num-label">Undo levels per match</div>
+    </div>
+    <div class="num-item fu fu-d3">
+      <div class="num-val">0</div>
+      <div class="num-label">Subscriptions needed</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <p class="section-eyebrow">How it works</p>
+  <h2 class="section-h fu">From kickoff to<br>match point</h2>
+
+  <div class="steps">
+    <div class="step fu">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Choose your format</h3>
+        <p>Best of 1, 3 or 5. Golden point or ventajas. Tie-break on or off. Configure it once, play straight away.</p>
+      </div>
+    </div>
+    <div class="step fu">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Pick who serves first</h3>
+        <p>Tap your side on the watch screen. PadelDeck tracks serve rotation automatically throughout the match.</p>
+      </div>
+    </div>
+    <div class="step fu">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Tap to score</h3>
+        <p>Left half of the screen for your team, right half for the opponents. One tap per point — that's it.</p>
+      </div>
+    </div>
+    <div class="step fu">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Review your match</h3>
+        <p>When the last point is played, your match is saved automatically. Check results, set history and stats any time from your wrist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / NOTIFY -->
+<section class="cta-section" id="notify">
+  <div class="cta-badge">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1a6 6 0 100 12A6 6 0 007 1zM7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Launching soon on Zepp Marketplace
+  </div>
+
+  <h2 class="cta-h fu">Be first<br>on the court.</h2>
+  <p class="cta-sub fu">Leave your email and we'll let you know the moment PadelDeck drops on the Zepp Marketplace.</p>
+
+  <form class="notify-form fu" id="notifyForm">
+    <input
+      class="notify-input"
+      type="email"
+      placeholder="your@email.com"
+      required
+      id="notifyEmail"
+      autocomplete="email"
+    >
+    <button class="notify-btn" type="submit">Notify me</button>
+  </form>
+  <p class="notify-note fu">No spam. Just one email when we launch.</p>
+  <p class="notify-success" id="notifySuccess">✓ &nbsp;You're on the list. See you on the court.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Padel<em>Deck</em></div>
+  <p>© 2026 PadelDeck &nbsp;·&nbsp; padeldeck.app</p>
+</footer>
+
+<script>
+  // ── Fade-up on scroll ───────────────────────────────────────────────────
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target) }
+    })
+  }, { threshold: 0.12 })
+  document.querySelectorAll('.fu').forEach(el => io.observe(el))
+
+  // ── Clock ────────────────────────────────────────────────────────────────
+  ;(function() {
+    const el = document.getElementById('wClock')
+    function set() {
+      const n = new Date()
+      if (el) el.textContent = String(n.getHours()).padStart(2,'0') + ':' + String(n.getMinutes()).padStart(2,'0')
+    }
+    set(); setInterval(set, 30000)
+  })()
+
+  // ── Watch score animation — lógica real del indicador de saque ───────────
+  //
+  // Cada frame define el estado COMPLETO tras cada punto:
+  //   us/them = puntos del juego en curso
+  //   usG/thG = juegos ganados en el set actual
+  //   st      = equipo que saca (0=WE, 1=THEY)
+  //   sr      = si saca desde la derecha (true) o izquierda (false)
+  //
+  // Reglas replicadas de la app:
+  //   - Tras cada punto: sr = !sr (cambia lado AD ↔ Deuce)
+  //   - Al ganar juego: st cambia de equipo; nuevo equipo empieza desde su AD
+  //     (WE's AD = derecha sr=true, THEY's AD = izquierda sr=false)
+  //
+  // Secuencia: THEY saca desde AD → juego completo → WE saca desde su AD → ...
+
+  const FRAMES = [
+    // THEY sirve — empieza en AD (izquierda, sr=false)
+    { us:'0',  them:'0',  usG:2, thG:3, st:1, sr:false },
+    { us:'0',  them:'15', usG:2, thG:3, st:1, sr:true  },
+    { us:'15', them:'15', usG:2, thG:3, st:1, sr:false },
+    { us:'15', them:'30', usG:2, thG:3, st:1, sr:true  },
+    { us:'30', them:'30', usG:2, thG:3, st:1, sr:false },
+    { us:'40', them:'30', usG:2, thG:3, st:1, sr:true  },
+    { us:'40', them:'40', usG:2, thG:3, st:1, sr:false },
+    { us:'A',  them:'40', usG:2, thG:3, st:1, sr:true  },
+    // WE gana → saca WE desde su AD (derecha, sr=true)
+    { us:'0',  them:'0',  usG:3, thG:3, st:0, sr:true  },
+    { us:'0',  them:'0',  usG:3, thG:3, st:0, sr:true  }, // pausa visual
+    // WE sirve
+    { us:'15', them:'0',  usG:3, thG:3, st:0, sr:false },
+    { us:'15', them:'15', usG:3, thG:3, st:0, sr:true  },
+    { us:'30', them:'15', usG:3, thG:3, st:0, sr:false },
+    { us:'40', them:'15', usG:3, thG:3, st:0, sr:true  },
+    { us:'40', them:'30', usG:3, thG:3, st:0, sr:false },
+    { us:'40', them:'40', usG:3, thG:3, st:0, sr:true  },
+    // WE gana de nuevo → THEY saca desde su AD (izquierda, sr=false)
+    { us:'0',  them:'0',  usG:4, thG:3, st:1, sr:false },
+    { us:'0',  them:'0',  usG:4, thG:3, st:1, sr:false }, // pausa visual
+  ]
+
+  const ARROWS = { se:'↘', sw:'↙', nw:'↖', ne:'↗' }
+  const SERVE_CELLS = [
+    { el: document.getElementById('wCell_TL'), iT:true,  iR:false },
+    { el: document.getElementById('wCell_TR'), iT:true,  iR:true  },
+    { el: document.getElementById('wCell_WL'), iT:false, iR:false },
+    { el: document.getElementById('wCell_WR'), iT:false, iR:true  },
+  ]
+  const wUs       = document.getElementById('wUs')
+  const wThem     = document.getElementById('wThem')
+  const wArrow    = document.getElementById('wArrow')
+  const wGridUs   = document.getElementById('wGridUs')
+  const wGridThem = document.getElementById('wGridThem')
+
+  function applyFrame(f) {
+    // Scores
+    wUs.textContent         = f.us
+    wThem.textContent       = f.them
+    if (wGridUs)   wGridUs.textContent   = f.usG
+    if (wGridThem) wGridThem.textContent = f.thG
+
+    // Serve arrow
+    const dir = f.st === 1
+      ? (f.sr ? 'sw' : 'se')
+      : (f.sr ? 'nw' : 'ne')
+    if (wArrow) wArrow.textContent = ARROWS[dir]
+
+    // Serve cells
+    const s = f.st === 1  // s=true → THEY serves
+    const r = f.sr
+    SERVE_CELLS.forEach(({ el, iT, iR }) => {
+      if (!el) return
+      const role = (iT === s && iR === r) ? 'sv'
+        : (iT !== s && iR !== r) ? 'tg'
+        : (iT === s) ? 'sm' : 'ot'
+      el.textContent  = role === 'sv' ? '1' : '●'
+      el.style.color  = { sv:'#29b6f6', tg:'#145b7b', sm:'#2a2a2a', ot:'#1e1e1e' }[role]
+      el.style.fontSize    = role === 'sv' ? '13px' : '10px'
+      el.style.fontWeight  = role === 'sv' ? '700'  : '400'
+    })
+  }
+
+  // Mostrar frame inicial sin animación
+  applyFrame(FRAMES[0])
+
+  let fi = 0
+  function tick() {
+    fi = (fi + 1) % FRAMES.length
+    const f = FRAMES[fi]
+    wUs.classList.add('fade')
+    wThem.classList.add('fade')
+    setTimeout(() => {
+      applyFrame(f)
+      wUs.classList.remove('fade')
+      wThem.classList.remove('fade')
+    }, 120)
+  }
+  setInterval(tick, 1400)
+
+  // ── Notify form ─────────────────────────────────────────────────────────
+  document.getElementById('notifyForm').addEventListener('submit', async function(e) {
+    e.preventDefault()
+    const email = document.getElementById('notifyEmail').value
+    const btn = this.querySelector('button')
+    btn.textContent = '...'
+    btn.disabled = true
+
+    try {
+      const res = await fetch('https://padeldeck.app/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (!res.ok) throw new Error()
+      this.style.display = 'none'
+      document.querySelector('.notify-note').style.display = 'none'
+      document.getElementById('notifySuccess').style.display = 'block'
+    } catch (_) {
+      btn.textContent = 'Notify me'
+      btn.disabled = false
+      document.getElementById('notifySuccess').textContent = '✗  Something went wrong. Try again.'
+      document.getElementById('notifySuccess').style.display = 'block'
+    }
+  })
+</script>
+
+</body>
+</html>

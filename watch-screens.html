@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PadelDeck — Watch Screens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #080808;
+      font-family: 'Inter', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+      padding: 56px 40px 80px;
+      min-height: 100vh;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .page-title h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #29b6f6;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+    .page-title p {
+      font-size: 13px;
+      color: #444;
+      letter-spacing: 0.5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 480px);
+      gap: 40px 48px;
+      justify-content: center;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .screen-wrap {
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px #1a1a1a, 0 24px 64px rgba(0,0,0,0.8);
+    }
+
+    .screen {
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background: #000;
+      flex-shrink: 0;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #3a3a3a;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── Screenshot helper ─────────────────────────────────────────────────── */
+    .screenshot-tip {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 12px;
+      color: #333;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-title">
+    <h1>PadelDeck</h1>
+    <p>Amazfit Balance · Zepp OS 3 · 480 × 480 px · Screenshot each watch at 1:1</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 1 — Home (normal)                                            -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- Accent underline above PADEL -->
+          <div style="position:absolute;left:210px;top:64px;width:60px;height:2px;background:#29b6f6"></div>
+
+          <!-- PADEL -->
+          <div style="position:absolute;left:0;top:76px;width:480px;height:86px;display:flex;align-items:center;justify-content:center;font-size:72px;color:#fff;font-weight:800;letter-spacing:-2px">PADEL</div>
+
+          <!-- D E C K -->
+          <div style="position:absolute;left:0;top:160px;width:480px;height:32px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#29b6f6;font-weight:700;letter-spacing:10px">D E C K</div>
+
+          <!-- New match (primary) -->
+          <div style="position:absolute;left:65px;top:215px;width:350px;height:110px;border-radius:45px;background:#29b6f6;display:flex;align-items:center;justify-content:center;font-size:30px;color:#000;font-weight:700">New match</div>
+
+          <!-- History (secondary left) -->
+          <div style="position:absolute;left:95px;top:345px;width:138px;height:70px;border-radius:25px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:21px;color:#999;font-weight:500">History</div>
+
+          <!-- Settings (secondary right) -->
+          <div style="position:absolute;left:247px;top:345px;width:138px;height:70px;border-radius:25px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:21px;color:#999;font-weight:500">Settings</div>
+        </div>
+      </div>
+      <span class="card-label">Home</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 2 — Score (live match: WE 30 · THEM 40 · sets 1–0 · games 2–3) -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG (fills gap between zones) -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- THEM zone: y=0..235, accent blue -->
+          <div style="position:absolute;left:0;top:0;width:480px;height:235px;background:#29b6f6"></div>
+
+          <!-- WE zone: y=245..480, dark navy -->
+          <div style="position:absolute;left:0;top:245px;width:480px;height:235px;background:#0a1929"></div>
+
+          <!-- THEM score "40" (centered in zone, seamless bg) -->
+          <!-- zoneY=0, zoneH=235, btnY=round((235-100)/2)=68 -->
+          <div style="position:absolute;left:120px;top:68px;width:240px;height:100px;display:flex;align-items:center;justify-content:center;font-size:88px;color:#fff;font-weight:800;line-height:1">40</div>
+
+          <!-- THEM label (y=STRIP_Y-32=170, blends into zone) -->
+          <div style="position:absolute;left:0;top:170px;width:480px;height:24px;display:flex;align-items:center;justify-content:center;font-size:16px;color:rgba(255,255,255,0.55);font-weight:700;letter-spacing:3px">T H E M</div>
+
+          <!-- WE score "30" (y=245+68=313) -->
+          <div style="position:absolute;left:120px;top:313px;width:240px;height:100px;display:flex;align-items:center;justify-content:center;font-size:88px;color:#fff;font-weight:800;line-height:1">30</div>
+
+          <!-- US label (y=STRIP_Y+STRIP_H+6=284) -->
+          <div style="position:absolute;left:0;top:284px;width:480px;height:24px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#29b6f6;font-weight:700;letter-spacing:5px">U S</div>
+
+          <!-- ── Floating island ── -->
+          <!-- Island BG: x=52, y=202, w=376, h=76, radius=14 -->
+          <div style="position:absolute;left:52px;top:202px;width:376px;height:76px;border-radius:14px;background:#1e1e1e"></div>
+
+          <!-- UNDO section (x=52, w=52) — BUTTON with icon -->
+          <div style="position:absolute;left:52px;top:202px;width:52px;height:76px;border-radius:14px;background:#1e1e1e;display:flex;align-items:center;justify-content:center;font-size:24px;color:#555">↺</div>
+
+          <!-- Divider: undo | serve -->
+          <div style="position:absolute;left:104px;top:210px;width:1px;height:60px;background:#282828"></div>
+
+          <!-- Serve block (x=105, w=72, h=76) -->
+          <!-- THEM+LEFT cell: sv → player "1" in accent -->
+          <div style="position:absolute;left:105px;top:202px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#29b6f6;font-weight:700">1</div>
+          <!-- THEM+RIGHT cell: sm → dim dot -->
+          <div style="position:absolute;left:141px;top:202px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#2a2a2a">●</div>
+          <!-- WE+LEFT cell: ot → very dim dot -->
+          <div style="position:absolute;left:105px;top:240px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#222">●</div>
+          <!-- WE+RIGHT cell: tg → accent-dim dot -->
+          <div style="position:absolute;left:141px;top:240px;width:36px;height:38px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#145b7b">●</div>
+          <!-- Arrow (↘ = se direction: THEM serves, left side) centered in serve block -->
+          <div style="position:absolute;left:105px;top:202px;width:72px;height:76px;display:flex;align-items:center;justify-content:center;font-size:22px;color:#29b6f6;opacity:0.85">↘</div>
+
+          <!-- Divider: serve | clock -->
+          <div style="position:absolute;left:177px;top:210px;width:1px;height:60px;background:#282828"></div>
+
+          <!-- Clock (x=178, w=177, center of clock section ~266px) -->
+          <div style="position:absolute;left:178px;top:202px;width:177px;height:76px;display:flex;align-items:center;justify-content:center;font-size:33px;color:#999;font-weight:400;letter-spacing:1px">14:32</div>
+
+          <!-- Divider: clock | grid (x=GRID_X-1=355, y=STRIP_Y+7=209, h=62) -->
+          <div style="position:absolute;left:355px;top:209px;width:1px;height:62px;background:#282828"></div>
+
+          <!-- Set grid (x=356, w=72, 3 cols of 24px) -->
+          <!-- Col 0 (set done 6–4): disabled #404040 -->
+          <div style="position:absolute;left:356px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#404040;font-weight:700">4</div>
+          <div style="position:absolute;left:356px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#404040;font-weight:700">6</div>
+          <!-- Col 1 (current set, games 3–2): THEM #999, WE accent -->
+          <div style="position:absolute;left:380px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#999;font-weight:700">3</div>
+          <div style="position:absolute;left:380px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#29b6f6;font-weight:700">2</div>
+          <!-- Col 2 (future set): near-invisible -->
+          <div style="position:absolute;left:404px;top:202px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#2a2a2a;font-weight:700">–</div>
+          <div style="position:absolute;left:404px;top:240px;width:24px;height:38px;display:flex;align-items:center;justify-content:center;font-size:21px;color:#2a2a2a;font-weight:700">–</div>
+        </div>
+      </div>
+      <span class="card-label">Score — Live Match</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 3 — Game Won overlay                                         -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- "MATCH PROGRESS" header -->
+          <div style="position:absolute;left:0;top:54px;width:480px;height:22px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#29b6f6;font-weight:600;letter-spacing:2px">MATCH PROGRESS</div>
+
+          <!-- Progress dots (BO3: set 0 done, set 1 active) -->
+          <!-- dotsW=3*10+2*10=50, dotX0=240-25=215 -->
+          <div style="position:absolute;left:215px;top:84px;width:10px;height:10px;border-radius:50%;background:#505050"></div>
+          <div style="position:absolute;left:235px;top:84px;width:10px;height:10px;border-radius:50%;background:#29b6f6"></div>
+          <div style="position:absolute;left:255px;top:84px;width:10px;height:10px;border-radius:50%;background:#303030"></div>
+
+          <!-- Hero "WE" (winner=0) — accent -->
+          <div style="position:absolute;left:0;top:100px;width:480px;height:108px;display:flex;align-items:center;justify-content:center;font-size:96px;color:#29b6f6;font-weight:800;line-height:1">WE</div>
+
+          <!-- "GAME WON" label -->
+          <div style="position:absolute;left:0;top:212px;width:480px;height:28px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#999;font-weight:600;letter-spacing:3px">GAME WON</div>
+
+          <!-- Stats card: x=56, y=248, w=368, h=90, radius=16 -->
+          <div style="position:absolute;left:56px;top:248px;width:368px;height:90px;border-radius:16px;background:#1e1e1e"></div>
+
+          <!-- Card vertical divider: x=238, y=262, w=2, h=62 -->
+          <div style="position:absolute;left:238px;top:262px;width:2px;height:62px;background:#383838"></div>
+
+          <!-- GAMES label (left): x=56, y=258, w=176, h=20 -->
+          <div style="position:absolute;left:56px;top:258px;width:176px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#666;font-weight:600;letter-spacing:1px">GAMES</div>
+
+          <!-- GAMES value "3 - 2": x=56, y=282, w=176, h=48 -->
+          <div style="position:absolute;left:56px;top:282px;width:176px;height:48px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff;font-weight:700">3 - 2</div>
+
+          <!-- SETS label (right): x=248, y=258, w=176, h=20 -->
+          <div style="position:absolute;left:248px;top:258px;width:176px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#666;font-weight:600;letter-spacing:1px">SETS</div>
+
+          <!-- SETS value "1 - 0": x=248, y=282, w=176, h=48 -->
+          <div style="position:absolute;left:248px;top:282px;width:176px;height:48px;display:flex;align-items:center;justify-content:center;font-size:36px;color:#fff;font-weight:700">1 - 0</div>
+
+          <!-- CONTINUE half-moon: x=0, y=374, w=480, h=106 -->
+          <div style="position:absolute;left:0;top:374px;width:480px;height:106px;background:#29b6f6;display:flex;align-items:flex-start;justify-content:center;padding-top:18px;font-size:20px;color:#000;font-weight:700;letter-spacing:4px">C O N T I N U E</div>
+        </div>
+      </div>
+      <span class="card-label">Game Won</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 4 — Match End (WE won 2–1 with super tie-break)             -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- Header "M A T C H   O V E R" -->
+          <div style="position:absolute;left:0;top:42px;width:480px;height:20px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#29b6f6;font-weight:600;letter-spacing:3px">M A T C H   O V E R</div>
+
+          <!-- Hero "WE" (text_size=90): y=68, h=96 -->
+          <div style="position:absolute;left:0;top:68px;width:480px;height:96px;display:flex;align-items:center;justify-content:center;font-size:90px;color:#29b6f6;font-weight:800;line-height:1">WE</div>
+
+          <!-- "M A T C H   W O N": y=170, h=24 -->
+          <div style="position:absolute;left:0;top:170px;width:480px;height:24px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#999;font-weight:500;letter-spacing:3px">M A T C H   W O N</div>
+
+          <!-- Set history card: x=56, y=200, w=368, h=80, radius=14 -->
+          <div style="position:absolute;left:56px;top:200px;width:368px;height:80px;border-radius:14px;background:#1e1e1e"></div>
+
+          <!-- Card column dividers (i>0 at cx=178, 300; y=206, h=68) -->
+          <div style="position:absolute;left:178px;top:206px;width:1px;height:68px;background:#282828"></div>
+          <div style="position:absolute;left:300px;top:206px;width:1px;height:68px;background:#282828"></div>
+
+          <!-- S1: "6 - 4" WE won → accent (colW=122, col 0 at x=56) -->
+          <div style="position:absolute;left:56px;top:207px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600;letter-spacing:1px">S1</div>
+          <div style="position:absolute;left:56px;top:225px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#29b6f6;font-weight:700">6 - 4</div>
+
+          <!-- S2: "4 - 6" THEY won → white (col 1 at x=178) -->
+          <div style="position:absolute;left:178px;top:207px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600;letter-spacing:1px">S2</div>
+          <div style="position:absolute;left:178px;top:225px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;font-weight:700">4 - 6</div>
+
+          <!-- S3: "10 - 8" WE won super TB → accent (col 2 at x=300) -->
+          <div style="position:absolute;left:300px;top:207px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600;letter-spacing:1px">S3</div>
+          <div style="position:absolute;left:300px;top:225px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#29b6f6;font-weight:700">10 - 8</div>
+
+          <!-- DONE button: x=88, y=294, w=304, h=68, radius=34 -->
+          <div style="position:absolute;left:88px;top:294px;width:304px;height:68px;border-radius:34px;background:#29b6f6;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;font-weight:700;letter-spacing:2px">DONE</div>
+
+          <!-- NEW MATCH button: x=148, y=376, w=184, h=48, radius=24 -->
+          <div style="position:absolute;left:148px;top:376px;width:184px;height:48px;border-radius:24px;background:#1e1e1e;display:flex;align-items:center;justify-content:center;font-size:14px;color:#999;font-weight:500;letter-spacing:1px">NEW MATCH</div>
+        </div>
+      </div>
+      <span class="card-label">Match End</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 5 — History (2 cards visible)                               -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- Header "HISTORY": y=44, h=34, text_size=26 -->
+          <div style="position:absolute;left:0;top:44px;width:480px;height:34px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-weight:700;letter-spacing:2px">HISTORY</div>
+
+          <!-- Accent underline: x=210, y=84, w=60, h=2 -->
+          <div style="position:absolute;left:210px;top:84px;width:60px;height:2px;background:#29b6f6"></div>
+
+          <!-- ── Card 1: WON (iy=96) ── -->
+          <!-- Card bg: x=64, y=iy+4=100, w=352, h=144, radius=20 -->
+          <div style="position:absolute;left:64px;top:100px;width:352px;height:144px;border-radius:20px;background:#2a2a2a"></div>
+          <!-- Left accent bar: x=64, y=iy+26=122, w=5, h=96 -->
+          <div style="position:absolute;left:64px;top:122px;width:5px;height:96px;background:#29b6f6;border-radius:0 0 0 0"></div>
+
+          <!-- Row 1: result "WON" + date "16 Apr" -->
+          <div style="position:absolute;left:80px;top:112px;width:140px;height:28px;display:flex;align-items:center;font-size:20px;color:#29b6f6;font-weight:700">WON</div>
+          <div style="position:absolute;left:256px;top:114px;width:136px;height:24px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:14px;color:#666">16 Apr</div>
+
+          <!-- Row 2: sets score "2  –  1" (text_size=52) -->
+          <div style="position:absolute;left:80px;top:144px;width:296px;height:54px;display:flex;align-items:center;font-size:50px;color:#fff;font-weight:700;line-height:1">2  –  1</div>
+
+          <!-- Row 3: per-set breakdown (text_size=15) -->
+          <div style="position:absolute;left:80px;top:202px;width:296px;height:20px;display:flex;align-items:center;font-size:15px;color:#e0e0e0">6-4  ·  4-6  ·  10-8</div>
+
+          <!-- Row 4: stats (text_size=13) -->
+          <div style="position:absolute;left:80px;top:224px;width:296px;height:18px;display:flex;align-items:center;font-size:13px;color:#666">43min  ·  87 – 76 pts</div>
+
+          <!-- ── Card 2: LOST (iy=252) ── -->
+          <!-- Card bg: x=64, y=iy+4=256, w=352, h=144, radius=20 -->
+          <div style="position:absolute;left:64px;top:256px;width:352px;height:144px;border-radius:20px;background:#2a2a2a"></div>
+          <!-- Left red bar: x=64, y=iy+26=278, w=5, h=96 -->
+          <div style="position:absolute;left:64px;top:278px;width:5px;height:96px;background:#ef5350"></div>
+
+          <!-- Row 1: result "LOST" + date "14 Apr" -->
+          <div style="position:absolute;left:80px;top:268px;width:140px;height:28px;display:flex;align-items:center;font-size:20px;color:#ef5350;font-weight:700">LOST</div>
+          <div style="position:absolute;left:256px;top:270px;width:136px;height:24px;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;font-size:14px;color:#666">14 Apr</div>
+
+          <!-- Row 2: sets score "1  –  2" -->
+          <div style="position:absolute;left:80px;top:300px;width:296px;height:54px;display:flex;align-items:center;font-size:50px;color:#fff;font-weight:700;line-height:1">1  –  2</div>
+
+          <!-- Row 3: breakdown -->
+          <div style="position:absolute;left:80px;top:358px;width:296px;height:20px;display:flex;align-items:center;font-size:15px;color:#e0e0e0">4-6  ·  6-3  ·  6-10</div>
+
+          <!-- Row 4: stats -->
+          <div style="position:absolute;left:80px;top:380px;width:296px;height:18px;display:flex;align-items:center;font-size:13px;color:#666">51min  ·  82 – 91 pts</div>
+        </div>
+      </div>
+      <span class="card-label">History</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 6 — Home (continue match in progress)                       -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- Accent underline -->
+          <div style="position:absolute;left:210px;top:64px;width:60px;height:2px;background:#29b6f6"></div>
+
+          <!-- PADEL -->
+          <div style="position:absolute;left:0;top:76px;width:480px;height:86px;display:flex;align-items:center;justify-content:center;font-size:72px;color:#fff;font-weight:800;letter-spacing:-2px">PADEL</div>
+
+          <!-- D E C K -->
+          <div style="position:absolute;left:0;top:160px;width:480px;height:32px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#29b6f6;font-weight:700;letter-spacing:10px">D E C K</div>
+
+          <!-- "MATCH IN PROGRESS" caption -->
+          <div style="position:absolute;left:0;top:200px;width:480px;height:22px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#666;font-weight:500;letter-spacing:1.5px">MATCH IN PROGRESS</div>
+
+          <!-- Mini stats card: x=80, y=228, w=320, h=60, radius=14 -->
+          <div style="position:absolute;left:80px;top:228px;width:320px;height:60px;border-radius:14px;background:#1e1e1e"></div>
+
+          <!-- Divider: x=238, y=240, w=2, h=36 -->
+          <div style="position:absolute;left:238px;top:240px;width:2px;height:36px;background:#383838"></div>
+
+          <!-- SETS label + value -->
+          <div style="position:absolute;left:80px;top:232px;width:156px;height:18px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;font-weight:600;letter-spacing:1px">SETS</div>
+          <div style="position:absolute;left:80px;top:250px;width:156px;height:34px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-weight:700">1 – 0</div>
+
+          <!-- GAMES label + value -->
+          <div style="position:absolute;left:242px;top:232px;width:158px;height:18px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#666;font-weight:600;letter-spacing:1px">GAMES</div>
+          <div style="position:absolute;left:242px;top:250px;width:158px;height:34px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-weight:700">2 – 3</div>
+
+          <!-- Continue button: x=88, y=300, w=304, h=76, radius=38 -->
+          <div style="position:absolute;left:88px;top:300px;width:304px;height:76px;border-radius:38px;background:#29b6f6;display:flex;align-items:center;justify-content:center;font-size:26px;color:#000;font-weight:700">Continue</div>
+
+          <!-- New match (secondary): x=148, y=390, w=184, h=56, radius=28 -->
+          <div style="position:absolute;left:148px;top:390px;width:184px;height:56px;border-radius:28px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;font-size:19px;color:#999;font-weight:500">New match</div>
+        </div>
+      </div>
+      <span class="card-label">Home — Continue Match</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!-- SCREEN 7 — Score Stats (swipe-left during match)                   -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <div class="card">
+      <div class="screen-wrap">
+        <div class="screen">
+          <!-- BG -->
+          <div style="position:absolute;inset:0;background:#000"></div>
+
+          <!-- Header "S T A T S": y=42, h=20, accent -->
+          <div style="position:absolute;left:0;top:42px;width:480px;height:20px;display:flex;align-items:center;justify-content:center;font-size:14px;color:#29b6f6;font-weight:600;letter-spacing:4px">S T A T S</div>
+
+          <!-- Sets score card: x=80, y=70, w=320, h=108, radius=22 -->
+          <div style="position:absolute;left:80px;top:70px;width:320px;height:108px;border-radius:22px;background:#1e1e1e"></div>
+
+          <!-- US label: x=80, y=79, w=130, h=17 -->
+          <div style="position:absolute;left:80px;top:79px;width:130px;height:17px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#29b6f6;font-weight:600;letter-spacing:3px">U S</div>
+          <!-- US sets value "1": x=80, y=97, w=130, h=70, text_size=52 -->
+          <div style="position:absolute;left:80px;top:97px;width:130px;height:70px;display:flex;align-items:center;justify-content:center;font-size:52px;color:#29b6f6;font-weight:800;line-height:1">1</div>
+
+          <!-- Card divider: x=239, y=82, w=2, h=84 -->
+          <div style="position:absolute;left:239px;top:82px;width:2px;height:84px;background:#282828"></div>
+
+          <!-- THEM label: x=270, y=79, w=130 -->
+          <div style="position:absolute;left:270px;top:79px;width:130px;height:17px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;font-weight:600;letter-spacing:2px">T H E M</div>
+          <!-- THEM sets value "0": x=270, y=97, w=130, h=70 -->
+          <div style="position:absolute;left:270px;top:97px;width:130px;height:70px;display:flex;align-items:center;justify-content:center;font-size:52px;color:#fff;font-weight:800;line-height:1">0</div>
+
+          <!-- Set history card: x=56, y=190, w=368, h=80, radius=14 -->
+          <div style="position:absolute;left:56px;top:190px;width:368px;height:80px;border-radius:14px;background:#1e1e1e"></div>
+          <!-- Dividers (BO3) -->
+          <div style="position:absolute;left:178px;top:196px;width:1px;height:68px;background:#282828"></div>
+          <div style="position:absolute;left:300px;top:196px;width:1px;height:68px;background:#282828"></div>
+          <!-- S1: set done 6-4, WE won → accent -->
+          <div style="position:absolute;left:56px;top:197px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600">S1</div>
+          <div style="position:absolute;left:56px;top:215px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#29b6f6;font-weight:700">6 - 4</div>
+          <!-- S2: current set, games 2-3 → secondary -->
+          <div style="position:absolute;left:178px;top:197px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600">S2</div>
+          <div style="position:absolute;left:178px;top:215px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#999;font-weight:700">2 - 3</div>
+          <!-- S3: future → dim -->
+          <div style="position:absolute;left:300px;top:197px;width:122px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600">S3</div>
+          <div style="position:absolute;left:300px;top:215px;width:122px;height:50px;display:flex;align-items:center;justify-content:center;font-size:19px;color:#666;font-weight:700">-</div>
+
+          <!-- Total points label: y=282 -->
+          <div style="position:absolute;left:0;top:282px;width:480px;height:16px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#999;font-weight:600;letter-spacing:2px">T O T A L   P O I N T S</div>
+
+          <!-- US pts "32": x=44, y=295, w=58 -->
+          <div style="position:absolute;left:44px;top:295px;width:58px;height:24px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#29b6f6;font-weight:700">32</div>
+          <!-- THEM pts "28": x=378, y=295, w=58 -->
+          <div style="position:absolute;left:378px;top:295px;width:58px;height:24px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:700">28</div>
+
+          <!-- Bar bg: x=106, y=304, w=268, h=8, radius=4 -->
+          <div style="position:absolute;left:106px;top:304px;width:268px;height:8px;border-radius:4px;background:#2a2a2a"></div>
+          <!-- Bar fill (US 32/60 ≈ 53% → 268×0.53≈142px): accent -->
+          <div style="position:absolute;left:106px;top:304px;width:142px;height:8px;border-radius:4px;background:#29b6f6"></div>
+
+          <!-- RESUME button: x=88, y=328, w=304, h=70, radius=35 -->
+          <div style="position:absolute;left:88px;top:328px;width:304px;height:70px;border-radius:35px;background:#29b6f6;display:flex;align-items:center;justify-content:center;font-size:20px;color:#000;font-weight:700;letter-spacing:2px">RESUME</div>
+
+          <!-- END MATCH button: x=140, y=410, w=200, h=48, radius=24 -->
+          <div style="position:absolute;left:140px;top:410px;width:200px;height:48px;border-radius:24px;background:#1e1e1e;display:flex;align-items:center;justify-content:center;font-size:15px;color:#999;font-weight:500;letter-spacing:1px">END MATCH</div>
+        </div>
+      </div>
+      <span class="card-label">Match Stats</span>
+    </div>
+
+  </div><!-- /grid -->
+
+  <div class="screenshot-tip">
+    Zoom browser to 100% · Screenshot each watch individually (480 × 480 px) · Use for landing page and store listing
+  </div>
+
+</body>
+</html>

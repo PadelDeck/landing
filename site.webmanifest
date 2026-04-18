@@ -1,0 +1,16 @@
+{
+  "name": "PadelDeck",
+  "short_name": "PadelDeck",
+  "description": "Padel score tracker for Amazfit Balance",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

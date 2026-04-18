@@ -1,38 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{META_LANG}}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
 
-  <title>PadelDeck — Padel Score App for Amazfit Balance</title>
-  <meta name="description" content="Track every padel point, game and set on your Amazfit Balance. Supports ventajas, golden point, tie-break and super tie-break. Free, offline, no phone needed.">
-  <link rel="canonical" href="https://padeldeck.app/">
+  <title>{{META_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="canonical" href="{{META_CANONICAL}}">
 
   <!-- Hreflang -->
-  <link rel="alternate" hreflang="x-default" href="https://padeldeck.app/">
-  <link rel="alternate" hreflang="en" href="https://padeldeck.app/">
-  <link rel="alternate" hreflang="es" href="https://padeldeck.app/es/">
+  <link rel="alternate" hreflang="x-default" href="{{META_HREFLANG_EN}}">
+  <link rel="alternate" hreflang="en" href="{{META_HREFLANG_EN}}">
+  <link rel="alternate" hreflang="es" href="{{META_HREFLANG_ES}}">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://padeldeck.app/">
-  <meta property="og:title" content="PadelDeck — Padel Score App for Amazfit Balance">
-  <meta property="og:description" content="Track every padel point, game and set on your Amazfit Balance. Supports ventajas, golden point, tie-break and super tie-break. Free, offline, no phone needed.">
+  <meta property="og:url" content="{{META_CANONICAL}}">
+  <meta property="og:title" content="{{META_TITLE}}">
+  <meta property="og:description" content="{{META_DESCRIPTION}}">
   <meta property="og:image" content="https://padeldeck.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PadelDeck padel score tracker app — Amazfit Balance screenshot">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image:alt" content="{{META_OG_IMAGE_ALT}}">
+  <meta property="og:locale" content="{{META_OG_LOCALE}}">
+  <meta property="og:locale:alternate" content="{{META_OG_LOCALE_ALT}}">
   <meta property="og:site_name" content="PadelDeck">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PadelDeck — Padel Score App for Amazfit Balance">
-  <meta name="twitter:description" content="Track every padel point, game and set on your Amazfit Balance. Supports ventajas, golden point, tie-break and super tie-break. Free, offline, no phone needed.">
+  <meta name="twitter:title" content="{{META_TITLE}}">
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}">
   <meta name="twitter:image" content="https://padeldeck.app/og-image.png">
-  <meta name="twitter:image:alt" content="PadelDeck padel score tracker app — Amazfit Balance screenshot">
+  <meta name="twitter:image:alt" content="{{META_OG_IMAGE_ALT}}">
 
   <!-- App & theme -->
   <meta name="application-name" content="PadelDeck">
@@ -49,112 +49,7 @@
   <!-- <meta name="google-site-verification" content="REPLACE_WITH_GSC_TOKEN"> -->
 
   <!-- Structured data -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "MobileApplication",
-  "name": "PadelDeck",
-  "applicationCategory": "SportsApplication",
-  "applicationSubCategory": "Sports & Fitness",
-  "operatingSystem": "Zepp OS 3",
-  "description": "Track every padel point, game and set on your Amazfit Balance. Supports ventajas, golden point, tie-break and super tie-break. Free, offline, no phone needed.",
-  "url": "https://padeldeck.app",
-  "inLanguage": "en",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR",
-    "availability": "https://schema.org/ComingSoon"
-  },
-  "screenshot": [
-    "https://padeldeck.app/screenshots/padeldeck_home.png",
-    "https://padeldeck.app/screenshots/padeldeck_score.png",
-    "https://padeldeck.app/screenshots/padeldeck_gameWin.png",
-    "https://padeldeck.app/screenshots/padeldeck_history.png"
-  ],
-  "featureList": [
-    "Offline padel score tracking",
-    "All official padel formats: best of 1, 3 or 5 sets",
-    "Ventajas and Golden Point at deuce",
-    "Tie-break and Super Tie-break",
-    "Up to 20 undo levels per match",
-    "Match history saved on watch",
-    "Automatic serve rotation indicator",
-    "Haptic feedback per point"
-  ],
-  "softwareVersion": "1.0"
-}
-</script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "PadelDeck",
-  "url": "https://padeldeck.app",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://padeldeck.app/og-image.png",
-    "width": "1200",
-    "height": "630"
-  }
-}
-</script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Which Amazfit watches does PadelDeck support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "PadelDeck runs on the Amazfit Balance with Zepp OS 3.26 or later. Support for additional Zepp OS 3 devices is planned for future releases."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is PadelDeck free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — completely free. No subscription, no in-app purchases, no account needed to track and review your matches."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need my phone while playing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. PadelDeck works fully offline on your Amazfit Balance. Your phone can stay in your bag. Scores, match history and settings are all managed directly on the watch."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which padel scoring formats are supported?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "PadelDeck supports best of 1, 3 or 5 sets; ventajas (classic advantage) or Golden Point at deuce; configurable tie-break (first to 7); and Super Tie-break (first to 10) as the deciding set."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens if I tap the wrong side?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Hit undo directly on the score screen. PadelDeck saves a full snapshot before every point, so you can reverse up to 20 consecutive points without losing any match data."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When will PadelDeck launch on the Zepp Marketplace?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We're preparing the submission now. Drop your email above to be notified the moment PadelDeck goes live."
-      }
-    }
-  ]
-}
-</script>
+  {{META_JSONLD}}
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -738,10 +633,10 @@
 <nav>
   <a href="/" class="nav-logo" aria-label="PadelDeck home">Padel<em>Deck</em></a>
   <div class="nav-right">
-    <a href="/es/" class="nav-lang" hreflang="es" aria-label="Ver en español">ES</a>
+    <a href="{{NAV_LANG_URL}}" class="nav-lang" hreflang="{{NAV_LANG_HREFLANG}}" aria-label="{{NAV_LANG_ARIA}}">{{NAV_LANG_LABEL}}</a>
     <div class="nav-pill">
       <span class="nav-dot"></span>
-      In development
+      {{NAV_STATUS}}
     </div>
   </div>
 </nav>
@@ -750,24 +645,24 @@
 <section class="hero">
   <div class="hero-glow" aria-hidden="true"></div>
 
-  <div class="hero-eyebrow" aria-label="Coming to Zepp Marketplace">
+  <div class="hero-eyebrow" aria-label="{{HERO_EYEBROW}}">
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5" stroke="#29B6F6" stroke-width="1.5"/><path d="M6 3v3l2 1.5" stroke="#29B6F6" stroke-width="1.2" stroke-linecap="round"/></svg>
-    Coming to Zepp Marketplace
+    {{HERO_EYEBROW}}
   </div>
 
   <h1>
-    Your padel.
-    <span class="line2">Your wrist.</span>
+    {{HERO_H1_LINE1}}
+    <span class="line2">{{HERO_H1_LINE2}}</span>
   </h1>
 
-  <p class="hero-sub">Track every point, game and set live on your Amazfit Balance. No phone. No paper. Just play.</p>
+  <p class="hero-sub">{{HERO_SUB}}</p>
 
   <div class="hero-actions">
     <a href="#notify" class="btn-accent">
-      Get notified
+      {{HERO_CTA_PRIMARY}}
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><path d="M2.5 7.5h10M8.5 3.5l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
-    <a href="#features" class="btn-ghost">See features</a>
+    <a href="#features" class="btn-ghost">{{HERO_CTA_SECONDARY}}</a>
   </div>
 
   <!-- Watch mockup — score screen con animación de puntos -->
@@ -805,66 +700,66 @@
 
 <!-- FEATURES -->
 <section class="features" id="features">
-  <p class="section-eyebrow">Why PadelDeck</p>
-  <h2 class="section-h fu">Everything your<br>match needs</h2>
+  <p class="section-eyebrow">{{FEAT_EYEBROW}}</p>
+  <h2 class="section-h fu">{{FEAT_H2}}</h2>
 
   <div class="grid">
     <div class="card fu fu-d1">
       <div class="card-icon" aria-hidden="true">⌚</div>
-      <div class="card-title">Built for the wrist</div>
-      <div class="card-desc">Designed from scratch for a round 480×480 AMOLED display. Huge tap zones for gloved hands, instant haptic feedback per point, and zero eye strain in full sun.</div>
+      <div class="card-title">{{FEAT_1_TITLE}}</div>
+      <div class="card-desc">{{FEAT_1_DESC}}</div>
     </div>
     <div class="card fu fu-d2">
       <div class="card-icon" aria-hidden="true">🎯</div>
-      <div class="card-title">Every official format</div>
-      <div class="card-desc">Ventajas or Golden Point at deuce. Tie-break (7 pts) or Super Tie-break (10 pts). Best of 1, 3 or 5 sets. Every padel rule variation — built in and ready.</div>
+      <div class="card-title">{{FEAT_2_TITLE}}</div>
+      <div class="card-desc">{{FEAT_2_DESC}}</div>
     </div>
     <div class="card fu fu-d3">
       <div class="card-icon" aria-hidden="true">↩</div>
-      <div class="card-title">Instant undo</div>
-      <div class="card-desc">Mis-tap? Hit undo directly on the score screen — up to 20 levels deep. No match ever ruined by a wrong tap. Fast, reliable, always one swipe away.</div>
+      <div class="card-title">{{FEAT_3_TITLE}}</div>
+      <div class="card-desc">{{FEAT_3_DESC}}</div>
     </div>
     <div class="card fu fu-d4">
       <div class="card-icon" aria-hidden="true">📋</div>
-      <div class="card-title">Full match history</div>
-      <div class="card-desc">Every match automatically saved on your Amazfit Balance. Per-set breakdown, total points, duration and match format — your full padel record, on your wrist.</div>
+      <div class="card-title">{{FEAT_4_TITLE}}</div>
+      <div class="card-desc">{{FEAT_4_DESC}}</div>
     </div>
   </div>
 </section>
 
 <!-- SCREENSHOTS -->
 <section class="screenshots">
-  <p class="section-eyebrow">See it in action</p>
-  <h2 class="section-h fu">Every screen,<br>built for the court.</h2>
+  <p class="section-eyebrow">{{SCR_EYEBROW}}</p>
+  <h2 class="section-h fu">{{SCR_H2}}</h2>
   <div class="screens-outer">
     <div class="screens-track">
       <div class="screen-item fu">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_home.png" alt="PadelDeck home screen on Amazfit Balance" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Home</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_home.png" alt="{{SCR_ALT_HOME}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_HOME}}</span>
       </div>
       <div class="screen-item fu fu-d1">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_score.png" alt="Live padel score tracking on Amazfit smartwatch" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Live Scoring</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_score.png" alt="{{SCR_ALT_SCORE}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_SCORE}}</span>
       </div>
       <div class="screen-item fu fu-d2">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_gameWin.png" alt="Game won overlay in PadelDeck padel app" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Game Won</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_gameWin.png" alt="{{SCR_ALT_GAME_WIN}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_GAME_WIN}}</span>
       </div>
       <div class="screen-item fu fu-d3">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_resumeStats.png" alt="Match stats view in PadelDeck for Amazfit" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Match Stats</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_resumeStats.png" alt="{{SCR_ALT_STATS}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_STATS}}</span>
       </div>
       <div class="screen-item fu fu-d4">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_matchEnded.png" alt="Match end screen with set breakdown in PadelDeck" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Match End</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_matchEnded.png" alt="{{SCR_ALT_MATCH_END}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_MATCH_END}}</span>
       </div>
       <div class="screen-item fu fu-d1">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_history.png" alt="Padel match history list on Amazfit Balance" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">History</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_history.png" alt="{{SCR_ALT_HISTORY}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_HISTORY}}</span>
       </div>
       <div class="screen-item fu fu-d2">
-        <img class="screen-img" src="https://padeldeck.app/screenshots/padeldeck_continueGame.png" alt="Resume padel match in progress on smartwatch" width="220" height="220" loading="lazy" decoding="async">
-        <span class="screen-cap">Continue Match</span>
+        <img class="screen-img" src="{{BASE_URL}}/screenshots/padeldeck_continueGame.png" alt="{{SCR_ALT_CONTINUE}}" width="220" height="220" loading="lazy" decoding="async">
+        <span class="screen-cap">{{SCR_CAP_CONTINUE}}</span>
       </div>
     </div>
   </div>
@@ -875,55 +770,55 @@
   <div class="numbers-inner">
     <div class="num-item fu">
       <div class="num-val" aria-label="6">6</div>
-      <div class="num-label">Accent colors</div>
+      <div class="num-label">{{NUM_1_LABEL}}</div>
     </div>
     <div class="num-item fu fu-d1">
       <div class="num-val" aria-label="50">50</div>
-      <div class="num-label">Matches stored locally</div>
+      <div class="num-label">{{NUM_2_LABEL}}</div>
     </div>
     <div class="num-item fu fu-d2">
       <div class="num-val" aria-label="20">20</div>
-      <div class="num-label">Undo levels per match</div>
+      <div class="num-label">{{NUM_3_LABEL}}</div>
     </div>
     <div class="num-item fu fu-d3">
       <div class="num-val" aria-label="0">0</div>
-      <div class="num-label">Subscriptions needed</div>
+      <div class="num-label">{{NUM_4_LABEL}}</div>
     </div>
   </div>
 </div>
 
 <!-- HOW IT WORKS -->
 <section class="how">
-  <p class="section-eyebrow">How it works</p>
-  <h2 class="section-h fu">From kickoff to<br>match point</h2>
+  <p class="section-eyebrow">{{HOW_EYEBROW}}</p>
+  <h2 class="section-h fu">{{HOW_H2}}</h2>
 
-  <ol class="steps" aria-label="How it works">
+  <ol class="steps" aria-label="{{HOW_EYEBROW}}">
     <li class="step fu">
       <div class="step-num" aria-hidden="true">1</div>
       <div class="step-content">
-        <h3>Choose your format</h3>
-        <p>Best of 1, 3 or 5 sets. Golden Point or ventajas at deuce. Tie-break and Super Tie-break on or off. Set your padel format once, then play.</p>
+        <h3>{{HOW_1_TITLE}}</h3>
+        <p>{{HOW_1_DESC}}</p>
       </div>
     </li>
     <li class="step fu">
       <div class="step-num" aria-hidden="true">2</div>
       <div class="step-content">
-        <h3>Pick who serves first</h3>
-        <p>Tap your side on the watch. PadelDeck tracks serve rotation automatically every game — and every two points in a tie-break.</p>
+        <h3>{{HOW_2_TITLE}}</h3>
+        <p>{{HOW_2_DESC}}</p>
       </div>
     </li>
     <li class="step fu">
       <div class="step-num" aria-hidden="true">3</div>
       <div class="step-content">
-        <h3>Tap to score</h3>
-        <p>Your half of the screen for your team, the other half for the opponents. One tap per point — no buttons to find, no menus to navigate.</p>
+        <h3>{{HOW_3_TITLE}}</h3>
+        <p>{{HOW_3_DESC}}</p>
       </div>
     </li>
     <li class="step fu">
       <div class="step-num" aria-hidden="true">4</div>
       <div class="step-content">
-        <h3>Review your match</h3>
-        <p>After the last point, your match is saved on the watch automatically. Set breakdown, total points, duration and format — all on your wrist.</p>
+        <h3>{{HOW_4_TITLE}}</h3>
+        <p>{{HOW_4_DESC}}</p>
       </div>
     </li>
   </ol>
@@ -931,33 +826,33 @@
 
 <!-- FAQ -->
 <section class="faq" id="faq">
-  <p class="section-eyebrow">FAQ</p>
-  <h2 class="section-h fu">Everything you<br>need to know</h2>
+  <p class="section-eyebrow">{{FAQ_EYEBROW}}</p>
+  <h2 class="section-h fu">{{FAQ_H2}}</h2>
 
   <dl class="faq-list">
     <div class="faq-item fu">
-      <dt class="faq-q">Which Amazfit watches does PadelDeck support?</dt>
-      <dd class="faq-a">PadelDeck runs on the Amazfit Balance with Zepp OS 3.26 or later. Support for additional Zepp OS 3 devices is planned for future releases.</dd>
+      <dt class="faq-q">{{FAQ_1_Q}}</dt>
+      <dd class="faq-a">{{FAQ_1_A}}</dd>
     </div>
     <div class="faq-item fu fu-d1">
-      <dt class="faq-q">Is PadelDeck free?</dt>
-      <dd class="faq-a">Yes — completely free. No subscription, no in-app purchases, no account needed to track and review your matches.</dd>
+      <dt class="faq-q">{{FAQ_2_Q}}</dt>
+      <dd class="faq-a">{{FAQ_2_A}}</dd>
     </div>
     <div class="faq-item fu fu-d2">
-      <dt class="faq-q">Do I need my phone while playing?</dt>
-      <dd class="faq-a">No. PadelDeck works fully offline on your Amazfit Balance. Your phone can stay in your bag. Scores, match history and settings are all managed directly on the watch.</dd>
+      <dt class="faq-q">{{FAQ_3_Q}}</dt>
+      <dd class="faq-a">{{FAQ_3_A}}</dd>
     </div>
     <div class="faq-item fu fu-d3">
-      <dt class="faq-q">Which padel scoring formats are supported?</dt>
-      <dd class="faq-a">PadelDeck supports best of 1, 3 or 5 sets; ventajas (classic advantage) or Golden Point at deuce; configurable tie-break (first to 7); and Super Tie-break (first to 10) as the deciding set.</dd>
+      <dt class="faq-q">{{FAQ_4_Q}}</dt>
+      <dd class="faq-a">{{FAQ_4_A}}</dd>
     </div>
     <div class="faq-item fu fu-d4">
-      <dt class="faq-q">What happens if I tap the wrong side?</dt>
-      <dd class="faq-a">Hit undo directly on the score screen. PadelDeck saves a full snapshot before every point, so you can reverse up to 20 consecutive points without losing any match data.</dd>
+      <dt class="faq-q">{{FAQ_5_Q}}</dt>
+      <dd class="faq-a">{{FAQ_5_A}}</dd>
     </div>
     <div class="faq-item fu">
-      <dt class="faq-q">When will PadelDeck launch on the Zepp Marketplace?</dt>
-      <dd class="faq-a">We're preparing the submission now. Drop your email above to be notified the moment PadelDeck goes live.</dd>
+      <dt class="faq-q">{{FAQ_6_Q}}</dt>
+      <dd class="faq-a">{{FAQ_6_A}}</dd>
     </div>
   </dl>
 </section>
@@ -966,32 +861,32 @@
 <section class="cta-section" id="notify">
   <div class="cta-badge">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1a6 6 0 100 12A6 6 0 007 1zM7 4v3.5l2.5 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-    Launching soon on Zepp Marketplace
+    {{CTA_BADGE}}
   </div>
 
-  <h2 class="cta-h fu">Be first<br>on the court.</h2>
-  <p class="cta-sub fu">Leave your email and we'll let you know the moment PadelDeck drops on the Zepp Marketplace.</p>
+  <h2 class="cta-h fu">{{CTA_H2}}</h2>
+  <p class="cta-sub fu">{{CTA_SUB}}</p>
 
   <form class="notify-form fu" id="notifyForm" novalidate>
     <input
       class="notify-input"
       type="email"
-      placeholder="your@email.com"
+      placeholder="{{CTA_INPUT_PLACEHOLDER}}"
       required
       id="notifyEmail"
       autocomplete="email"
-      aria-label="your@email.com"
+      aria-label="{{CTA_INPUT_PLACEHOLDER}}"
     >
-    <button class="notify-btn" type="submit">Notify me</button>
+    <button class="notify-btn" type="submit">{{CTA_BTN}}</button>
   </form>
-  <p class="notify-note fu">No spam. Just one email when we launch.</p>
-  <p class="notify-success" id="notifySuccess" role="status">✓ &nbsp;You're on the list. See you on the court.</p>
+  <p class="notify-note fu">{{CTA_NOTE}}</p>
+  <p class="notify-success" id="notifySuccess" role="status">{{CTA_SUCCESS}}</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <a href="/" class="footer-logo" aria-label="PadelDeck home">Padel<em>Deck</em></a>
-  <p>© 2026 PadelDeck · padeldeck.app</p>
+  <p>{{FOOTER_COPY}}</p>
 </footer>
 
 <script>
@@ -1108,9 +1003,9 @@
       document.querySelector('.notify-note').style.display = 'none'
       document.getElementById('notifySuccess').style.display = 'block'
     } catch (_) {
-      btn.textContent = 'Notify me'
+      btn.textContent = '{{CTA_BTN}}'
       btn.disabled = false
-      document.getElementById('notifySuccess').textContent = '✗ Something went wrong. Try again.'
+      document.getElementById('notifySuccess').textContent = '{{CTA_ERROR}}'
       document.getElementById('notifySuccess').style.display = 'block'
     }
   })
